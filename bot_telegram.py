@@ -156,18 +156,32 @@ async def transcrever_audio(caminho_arquivo_ogg):
 # 3. FUNÇÃO DE PROCESSAMENTO (O CÉREBRO)
 # (Esta função não muda)
 def extrair_dados(texto):
-    match = re.search(r"cliente:\s*(.*?),\s*info:\s*(.*)", texto, re.IGNORECASE | re.DOTALL)
+    """
+    Procura pelo "Contrato" no texto.
+    Agora é flexível e aceita:
+    - 'Cliente: [Nome], Info: [Dados]' (digitado)
+    - 'cliente [Nome] info [Dados]' (falado)
+    """
+    # Regex (com \W+) aceita qualquer caractere não-alfanumérico
+    # (espaços, vírgulas, dois-pontos, etc.) como separador.
+    match = re.search(r"cliente\W+(.*?)\W+info\W+(.*)", texto, re.IGNORECASE | re.DOTALL)
+
     if match:
         cliente = match.group(1).strip()
         info = match.group(2).strip()
+
+        # Checagem extra: garante que o nome não está vazio
         if not cliente or not info:
+            print("Formato reconhecido, mas cliente ou info estão vazios.")
             return None, None
+
         print(f"Dados extraídos: Cliente={cliente}, Info={info}")
         return cliente, info
     else:
         print(f"Formato não reconhecido no texto: '{texto}'")
         return None, None
-
+    
+    
 # 4. FUNÇÕES DO "OUVIDO" (TELEGRAM - v20+)
 # (Esta função não muda)
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):

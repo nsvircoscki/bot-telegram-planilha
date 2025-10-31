@@ -1,0 +1,13 @@
+# Ambiente virtual do Python
+.venv/
+
+# Segredos
+credentials.json
+
+# Arquivos temporários do bot
+temp_audio.wav
+*.ogg
+
+# Cache do Python
+__pycache__/
+*.pyc

@@ -11,8 +11,8 @@ import os
 from fuzzywuzzy import process as fuzzy_process
 
 # --- CONFIGURAÇÕES - VERIFIQUE SEUS DADOS AQUI ---
-TOKEN_TELEGRAM = "8285115720:AAGZ1TY3CrocQlJZSkpQA-7AAbWFtV99rzE"
-ID_PLANILHA = "1MU3j54f0usCEDVRDMYhQnw289KwNffR6Vjw81I1WuvI"
+TOKEN_TELEGRAM = "seu token"
+ID_PLANILHA = "id da sua planilha"
 ARQUIVO_CREDENCIAL = "credentials.json"
 
 SCOPES = [

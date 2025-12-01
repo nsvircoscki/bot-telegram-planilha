@@ -161,7 +161,7 @@ def extrair_dados(texto):
     Agora é flexível e aceita:
     - 'Cliente: [Nome], Info: [Dados]' (digitado)
     - 'cliente [Nome] info [Dados]' (falado)
-    """
+    """ 
     # Regex (com \W+) aceita qualquer caractere não-alfanumérico
     # (espaços, vírgulas, dois-pontos, etc.) como separador.
     match = re.search(r"cliente\W+(.*?)\W+info\W+(.*)", texto, re.IGNORECASE | re.DOTALL)
